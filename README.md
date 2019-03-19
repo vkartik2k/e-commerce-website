@@ -2,7 +2,7 @@ Prerequisites : Nodejs must be installed to run the server. Mysql should be inst
 
 To initialise the server, the following commands should be typed on the cmd.
 
-cd <location of file server.js>
+cd <location of file server.js>/e-commerce-website/server
 node server.js
 
 The site will be active on domain http://localhost:1212/
