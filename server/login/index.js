@@ -6,6 +6,15 @@ $(function () {
         {
             password:password,
             mobileno:phoneno,
+        },
+        function(data){
+            console.log(data)
+            if(data){
+                window.location.href = '/';
+            }
+            else{
+                alert("Incorrect!")
+            }
         })
     })
 })

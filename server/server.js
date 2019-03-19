@@ -17,7 +17,7 @@ server.use(express.urlencoded({extenstion:true}))
 server.set('view engine','hbs')
 
 server.use(session({
-    secret: 'dfionxfcjhgffghhgfbnbv'
+    secret: 'secret'
 }))
 server.use(passport.initialize())
 server.use(passport.session())

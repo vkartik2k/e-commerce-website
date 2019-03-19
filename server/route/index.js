@@ -28,10 +28,20 @@ route.post("/jhucdghnbyhfxpqm", function (req, res, next) {
     console.log("ADDED TO DATABASE")
 })
 
-route.post("/ashevisdkedjiqac", passport.authenticate('local', {
-    failureRedirect : '/login/signup.html',
-    successRedirect : '/'
-}))
+route.post('/ashevisdkedjiqac', function(req, res, next) {
+    passport.authenticate('local', function(err, user, info) {
+        console.log(user);
+      if (err) { return res.send(false); }
+      if (!user) { return res.send(false) }
+      req.logIn(user, function(err) {
+        if (err) { console.log('error hai bhai')
+        return res.send(false);  }
+        return res.send(true);
+      });
+    })(req, res, next);
+  });
+
+
 
 route.post("/bvsdfgimeckgrtv", function (req, res, next) {
     if(req.body.username == "admin" && req.body.password=="adminrights"){

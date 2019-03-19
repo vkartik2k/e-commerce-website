@@ -1,5 +1,5 @@
 const passport = require('passport')
-const passportlocal = require('passport-local')
+const passportStrategy = require('passport-local').Strategy
 const Users = require('./database/index').users
 
 passport.serializeUser(function(user, done){
@@ -7,6 +7,7 @@ passport.serializeUser(function(user, done){
 })
 
 passport.deserializeUser(function(mobileno, done){
+    console.log('hello')
     Users.findOne({
         where : {
             mobileno : mobileno
@@ -20,34 +21,20 @@ passport.deserializeUser(function(mobileno, done){
 
 })
 
-passport.use(new passportlocal.Strategy(function(mobileno, password, done){
-    users.findAll(
+passport.use(new passportStrategy(function(mobileno, password, done){
+    Users.findAll(
         {where: {
             mobileno:mobileno,
             password: password
         }}
     ).then(function(UsersProject) {
-
-        var ret_users=[];
-
         UsersProject.forEach(function (UserProject) {
-            ret_users.push({
-                phoneno:UserProject.mobileno,
-                name:UserProject.name,
-             })
-
+            return done(null, UserProject);
         })
-        if(ret_users.length==0){
-            return done(null, false);
-        }
-        if(ret_users.length){
-            return done(null, ret_users[0]);
-        }
-        else{
-
-        }
         return done(null, false);
     })
-}))
+        
+    }
+))
 
 exports = module.exports = passport
