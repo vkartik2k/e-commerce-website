@@ -1,4 +1,5 @@
 Prerequisites : Nodejs must be installed to run the server. Mysql should be installed and running while node file is running.
+Login in mysql is done through root and password is assumed to be ''(blank).If you want to change this you can change this from server/database/index.js
 
 To initialise the server, the following commands should be typed on the cmd.
 
