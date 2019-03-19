@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="../forhbs/products.css">
+    
+</head>
+<body>
+    <div id="publicnotify">
+    </div>
+    <div id="dheader">
+        <div id="headlogo">
+            We are <spam id="heros">HEROS</spam>
+        </div>
+        <div id="headsearch">
+            <div id="headsearch1">
+                <input id="hsearch" placeholder="Search here...">
+                <button id="hsearchbutton"><img id="searchimg" src="../forhbs/image/search.png"></button>
+                <div id="dropdown">
+                </div>
+            </div>
+        </div>
+        <div id="headdynamic">Hello, Zene
+            &nbsp;&nbsp;
+            <a href="./cart.html"><button id="cart" class="btn btn-primary wishcart">GO TO CART</button></a>
+            <a href="./wishlist.html"><button id="wish" class="btn btn-primary wishcart">♡ WISHLIST</button></a>
+            <button id="logout" class="btn btn-outline-primary signinout">LOG OUT</button>
+        </div>
+    </div>
+    <div id="container">
+        <div id="cimage">
+            <div class="pimage"><img src="../forhbs/image/{{id}}a.png" class="pimg"></div>
+            <div class="pimage"><img src="../forhbs/image/{{id}}b.png" class="pimg"></div>
+            <div class="pimage"><img src="../forhbs/image/{{id}}c.png" class="pimg"></div>
+        </div>
+        <div id="ccontent">
+            <div id="pname">{{name}}</div>
+            <div id="pcompany">{{companyname}}</div>
+            <div id="pprice">&#8377;{{price}} <spam id="ppriceori">&#8377;{{mrp}}</spam> <spam id="ppricedis">{{discount}} off</spam></div>
+            <div id="psizeh">SELECT SIZE</div>
+            <button class="psize btn btn-outline-primary pink">S</button>
+            <button class="psize btn btn-outline-primary pink">M</button>
+            <button class="psize btn btn-outline-primary pink">L</button>
+            <button class="psize btn btn-outline-primary pink">XL</button>
+            <button class="psize btn btn-outline-primary pink">XXL</button>
+            <br>
+            <button class="pbtn btn btn-primary" id="cart{{id}}">Add to cart</button>
+            <button class="pbtn btn btn-outline-primary" id="wish{{id}}">&#9825; Wishlist</button>
+            <br>
+            <div id="pdiscriptionh">PRODUCT DESCRIPTION</div>
+            <div id="pdiscriptionb">{{description}}</div>
+            <div id="ginfo">Tax: Applicable tax on the basis of exact location & discount will be charged at the time of checkout<br>
+                100% Original Products<br>
+                Free Delivery on all the products<br>
+                Cash on delivery is not available<br>
+                Easy 30 days returns and exchanges<br>
+                Try & Buy is not available</div>
+        </div>
+
+    </div>
+    <script src="../forhbs/jquery.js"></script>
+    <script src="../forhbs/products.js"></script>
+    <script>
+        addtolist({{id}});
+    </script>
+    
+    
+</body>
+</html>
