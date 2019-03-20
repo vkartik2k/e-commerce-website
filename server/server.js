@@ -1,5 +1,6 @@
 const express = require("express")
-const session = require("express-session")
+const session = require("express-session"),
+    bodyParser = require("body-parser");
 const passport = require('./passport')
 const route = require(__dirname+'/route')
 const server = express()
@@ -16,11 +17,11 @@ server.use(express.json())
 server.use(express.urlencoded({extenstion:true}))
 server.set('view engine','hbs')
 
-server.use(session({
-    secret: 'secret'
-}))
-server.use(passport.initialize())
-server.use(passport.session())
+server.use(express.static("public"));
+server.use(session({ secret: "cats" }));
+server.use(bodyParser.urlencoded({ extended: false }));
+server.use(passport.initialize());
+server.use(passport.session());
 
 server.use('/login', express.static(__dirname+'/login'))
 server.use('/admin', express.static(__dirname+'/admin'))

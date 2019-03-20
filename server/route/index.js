@@ -30,13 +30,13 @@ route.post("/jhucdghnbyhfxpqm", function (req, res, next) {
 
 route.post('/ashevisdkedjiqac', function(req, res, next) {
     passport.authenticate('local', function(err, user, info) {
+        console.log(req.body.mobileno)
         console.log(user);
       if (err) { return res.send(false); }
       if (!user) { return res.send(false) }
       req.logIn(user, function(err) {
-        if (err) { console.log('error hai bhai')
-        return res.send(false);  }
-        return res.send(true);
+        if (err) { return res.send(false); }
+        return res.send(user);
       });
     })(req, res, next);
   });

@@ -1,18 +1,20 @@
 const passport = require('passport')
 const passportStrategy = require('passport-local').Strategy
-const Users = require('./database/index').users
+const users = require('./database/index.js').users
 
 passport.serializeUser(function(user, done){
+    console.log('hello')
     done(null, user.mobileno)
 })
 
 passport.deserializeUser(function(mobileno, done){
     console.log('hello')
-    Users.findOne({
+    users.findOne({
         where : {
             mobileno : mobileno
         }
-    }).then(function(user){
+    },function(err, user){
+        if(err) return done(err);
         if(!user){
             return done(new Error("NO SUCH USER"));
         }
@@ -21,17 +23,18 @@ passport.deserializeUser(function(mobileno, done){
 
 })
 
-passport.use(new passportStrategy(function(mobileno, password, done){
-    Users.findAll(
+passport.use('login', new passportStrategy(function(mobileno, password, done){
+    users.findOne(
         {where: {
             mobileno:mobileno,
             password: password
         }}
-    ).then(function(UsersProject) {
-        UsersProject.forEach(function (UserProject) {
-            return done(null, UserProject);
-        })
-        return done(null, false);
+    ,function(err, User) {
+        if(err) return done(err,false,{message: "No such user"});
+        if(User){
+            return done(null, User,{message: "No such user"});
+        }
+        return done(null, false,{message: "No such user"});
     })
         
     }
