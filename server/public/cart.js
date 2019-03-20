@@ -75,13 +75,14 @@ let noofproducts = 0;
 function login(){
     $.post('../route/qwdfjhsdxcbvdfre',{},
     function(data){
-        if(data.name==""){
+        console.log(data.mobileno);
+        if(data.mobileno==null){
             $("#headdynamic").html(`<a href="../login/index.html"><button id="signin" class="btn btn-primary signinout">SIGN IN</button></a>
             <a href="../login/signup.html"><button id ="signup"class="btn btn-outline-primary signinout">SIGN UP</button></a>`);
             signin();
         }
         else{
-            $("#headdynamic").html(`Hello, `+ capitalize(data.name) +`
+            $("#headdynamic").html(`Hello, `+ capitalize(data.mobileno) +`
             &nbsp;&nbsp;
             <a href="./"><button id="cart" class="btn btn-primary wishcart">HOME</button></a>
             <a href="./wishlist.html"><button id="wish" class="btn btn-primary wishcart">&#9825; WISHLIST</button></a>
@@ -205,7 +206,7 @@ function loadpage() {
         $("#deliverycharges").text("+"+billing.delivery+'/-');
         $("#payable").text(billing.payable+'/-');
 
-    },30)
+    },100)
 }
 function removeabc(id){
     console.log("clicked"+id)

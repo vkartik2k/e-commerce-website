@@ -1,31 +1,32 @@
 const express = require("express")
-const session = require("express-session"),
-    bodyParser = require("body-parser");
+const session = require("express-session");
 const passport = require('./passport')
 const route = require(__dirname+'/route')
-const server = express()
 const db = require('./database')
 const products = db.products
+const server = express()
 
 function roundNumber(rnum, rlength) { 
     var newnumber = Math.round(rnum * Math.pow(10, rlength)) / Math.pow(10, rlength);
     return newnumber;
 }
 
+server.set('view engine','hbs')
 
 server.use(express.json())
 server.use(express.urlencoded({extenstion:true}))
-server.set('view engine','hbs')
 
-server.use(express.static("public"));
-server.use(session({ secret: "cats" }));
-server.use(bodyParser.urlencoded({ extended: false }));
-server.use(passport.initialize());
-server.use(passport.session());
+
+server.use(session({
+    secret: 'somesecretstring'
+}))
+server.use(passport.initialize())
+server.use(passport.session())
 
 server.use('/login', express.static(__dirname+'/login'))
 server.use('/admin', express.static(__dirname+'/admin'))
 server.use('', express.static(__dirname+'/public'))
+server.use('/route',route)
 server.get('/product/:pida',function(req,res){
     
     console.log(req.params.pida)
@@ -69,7 +70,6 @@ server.get('/product/:pida',function(req,res){
     
 })
 
-server.use('/route',route)
-
-
-server.listen(1212)
+server.listen(1212, function(){
+    console.log("Server running on http://localhost:1212")
+})

@@ -165,7 +165,7 @@ function autocomplete(){
             
             $("#dropdown").html(str);
 
-        },100)
+        },300)
 
         setTimeout(function(){
             let data = hsearch.val();

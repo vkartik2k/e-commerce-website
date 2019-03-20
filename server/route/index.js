@@ -30,8 +30,6 @@ route.post("/jhucdghnbyhfxpqm", function (req, res, next) {
 
 route.post('/ashevisdkedjiqac', function(req, res, next) {
     passport.authenticate('local', function(err, user, info) {
-        console.log(req.body.mobileno)
-        console.log(user);
       if (err) { return res.send(false); }
       if (!user) { return res.send(false) }
       req.logIn(user, function(err) {
@@ -40,8 +38,6 @@ route.post('/ashevisdkedjiqac', function(req, res, next) {
       });
     })(req, res, next);
   });
-
-
 
 route.post("/bvsdfgimeckgrtv", function (req, res, next) {
     if(req.body.username == "admin" && req.body.password=="adminrights"){
@@ -57,7 +53,6 @@ route.post("/bvsdfgimeckgrtv", function (req, res, next) {
 })
 
 route.post("/qwdfghyubndsiosd", function (req, res, next) {
-    console.log("WE RECIEVED REQUEST")
     products.findAll(
     ).then(function(data1) {
 
@@ -79,10 +74,10 @@ route.post("/qwdfghyubndsiosd", function (req, res, next) {
 })
 
 route.post("/opuihjcvbnfgrtma", function (req, res, next) {
-    if(rights.mobilenosaved != -1){
+    if(req.user != null){
         users.findAll({
             where:{
-                mobileno:rights.mobilenosaved
+                mobileno:req.user.mobileno
             }
         })
         .then(function(UserProject){
@@ -121,10 +116,10 @@ route.post("/opuihjcvbnfgrtma", function (req, res, next) {
 })
 
 route.post("/opuihjcvbnfgrtmb", function (req, res, next) {
-    if(rights.mobilenosaved != -1){
+    if(req.user != null){
         users.findAll({
             where:{
-                mobileno:rights.mobilenosaved
+                mobileno:req.user.mobileno
             }
         })
         .then(function(UserProject){
@@ -162,19 +157,11 @@ route.post("/opuihjcvbnfgrtmb", function (req, res, next) {
     
 })
 route.post("/qwdfjhsdxcbvdfre", function (req, res, next) {
-    let ans = {
-        name:rights.usernamesaved,
-        phoneno:rights.mobilenosaved
-    }
-
-    res.send(ans);
-    
+    res.send(req.user);
 })
 
 route.post("/ghfdrtyujhweqwmn", function (req, res, next) {
-    console.log("logout")
-    rights.mobilenosaved = -1;
-    rights.usernamesaved = "";
+    req.logout();
     res.send(true)
     
 })
@@ -295,11 +282,11 @@ route.post("/sdjkoplmnjiuhbwf",function(req,res,next){
 })
 
 route.post("/uiythjrefkrtvbna",function(req,res,next){
-    if(rights.mobilenosaved != -1){
+    if(req.user != null){
         
         users.findAll(
             {where: {
-                mobileno:rights.mobilenosaved
+                mobileno:req.user.mobileno
             }}
         ).then(function(UsersProject) {
             let wish = '';
@@ -313,7 +300,7 @@ route.post("/uiythjrefkrtvbna",function(req,res,next){
             wish += req.body.id;
             console.log(wish);
             users.update( { wishlist: wish },
-            { where: { mobileno:rights.mobilenosaved } })
+            { where: { mobileno:req.user.mobileno } })
             .then(function(ans){
                 res.send(true)
         })
@@ -327,11 +314,11 @@ route.post("/uiythjrefkrtvbna",function(req,res,next){
 
 })
 route.post("/uiythjrefkrtvbnp",function(req,res,next){
-    if(rights.mobilenosaved != -1){
+    if(req.user != null){
         
         users.findAll(
             {where: {
-                mobileno:rights.mobilenosaved
+                mobileno:req.user.mobileno
             }}
         ).then(function(UsersProject) {
             let wish = '';
@@ -345,7 +332,7 @@ route.post("/uiythjrefkrtvbnp",function(req,res,next){
             wish += req.body.id;
             console.log(wish);
             users.update( { cart: wish },
-            { where: { mobileno:rights.mobilenosaved } })
+            { where: { mobileno:req.user.mobileno } })
             .then(function(ans){
                 res.send(true)
         })
@@ -360,10 +347,10 @@ route.post("/uiythjrefkrtvbnp",function(req,res,next){
 })
 
 route.post("/polkmuhrfguinbvg",function(req,res,next){
-    if(rights.mobilenosaved != -1){
+    if(req.user!= null){
         users.findAll(
             {where: {
-                mobileno:rights.mobilenosaved
+                mobileno:req.user.mobileno
             }}
         ).then(function(UsersProject) {
             let wish = '';
@@ -375,7 +362,7 @@ route.post("/polkmuhrfguinbvg",function(req,res,next){
             newwish = wish.replace(req.body.id.toString(),"");
             newwish = newwish.trim();
             users.update( { cart: newwish },
-            { where: { mobileno:rights.mobilenosaved } })
+            { where: { mobileno:req.user.mobileno } })
             .then(function(ans){
                 res.send(true)
         })
@@ -389,10 +376,10 @@ route.post("/polkmuhrfguinbvg",function(req,res,next){
 
 })
 route.post("/polkmuhrfguinbvk",function(req,res,next){
-    if(rights.mobilenosaved != -1){
+    if(req.user != null){
         users.findAll(
             {where: {
-                mobileno:rights.mobilenosaved
+                mobileno:req.user.mobileno
             }}
         ).then(function(UsersProject) {
             let wish = '';
@@ -405,7 +392,7 @@ route.post("/polkmuhrfguinbvk",function(req,res,next){
             newwish = newwish.trim();
             console.log("new wish"+wish)
             users.update( { wishlist: newwish },
-            { where: { mobileno:rights.mobilenosaved } })
+            { where: { mobileno: req.user.mobileno } })
             .then(function(ans){
                 res.send(true)
         })

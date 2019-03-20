@@ -1,11 +1,11 @@
 $(function () {
     $("#login").click(function () {
         let password = $("#password").val()
-        let phoneno = $("#phoneno").val()
+        let mobileno = $("#phoneno").val()
         $.post('../route/ashevisdkedjiqac/',
         {
             password:password,
-            mobileno:phoneno,
+            mobileno:mobileno
         },
         function(data){
             console.log(data)

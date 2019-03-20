@@ -1,43 +1,47 @@
 const passport = require('passport')
-const passportStrategy = require('passport-local').Strategy
+const LocalStrategy = require('passport-local').Strategy
 const users = require('./database/index.js').users
 
 passport.serializeUser(function(user, done){
-    console.log('hello')
     done(null, user.mobileno)
 })
 
 passport.deserializeUser(function(mobileno, done){
-    console.log('hello')
     users.findOne({
         where : {
             mobileno : mobileno
         }
-    },function(err, user){
-        if(err) return done(err);
-        if(!user){
-            return done(new Error("NO SUCH USER"));
+    }).then((user) => {
+        if (!user) {
+            return done(new Error("No such user"))
         }
-        return done(null, user);
+        return done(null, user)
+    }).catch((err) => {
+        done(err)
     })
 
 })
 
-passport.use('login', new passportStrategy(function(mobileno, password, done){
-    users.findOne(
-        {where: {
-            mobileno:mobileno,
-            password: password
-        }}
-    ,function(err, User) {
-        if(err) return done(err,false,{message: "No such user"});
-        if(User){
-            return done(null, User,{message: "No such user"});
+passport.use(new LocalStrategy({
+    usernameField: 'mobileno',
+    passwordField: 'password'
+},function (mobileno, password, done) {
+    users.findOne({
+        where: {
+            mobileno: mobileno
         }
-        return done(null, false,{message: "No such user"});
+    }).then((user) => {
+        console.log(user);
+        if (!user) {
+            return done(null, false, {message: "No such user"})
+        }
+        if (user.password !== password) {
+            return done(null, false, {message: "Wrong password"})
+        }
+        return done(null, user)
+    }).catch((err) => {
+        return done(err)
     })
-        
-    }
-))
+}))
 
 exports = module.exports = passport

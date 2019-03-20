@@ -126,18 +126,18 @@ footer{
 
 #headlogo{
     font-size: 24pt;
-    width: 410px;
+    width: 400px;
     padding-left: 30px;
 }
 #headsearch{
-    width: 410px;
     padding: 5px;
+    width:410px;
     padding-left:70px;
 }
 
 #headdynamic{
     text-align: right;
-    width: 475px;
+    width: 490px;
 
 }
 #hsearch{
