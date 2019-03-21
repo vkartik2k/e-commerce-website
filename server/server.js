@@ -18,7 +18,7 @@ server.use(express.urlencoded({extenstion:true}))
 
 
 server.use(session({
-    secret: 'somesecretstring'
+    secret: 'iloveabigstringwhichissecret'
 }))
 server.use(passport.initialize())
 server.use(passport.session())
@@ -29,7 +29,6 @@ server.use('', express.static(__dirname+'/public'))
 server.use('/route',route)
 server.get('/product/:pida',function(req,res){
     
-    console.log(req.params.pida)
     products.findAll({
         where:{
             pid:req.params.pida
@@ -61,7 +60,7 @@ server.get('/product/:pida',function(req,res){
             res.render('products',objc)
         }
         else{
-            res.send("<h1>No Such Page Exists</h1>")
+            res.send("<center><h1>No Such Page Exists</h1></center>")
         }
         
     })

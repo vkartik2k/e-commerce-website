@@ -52,7 +52,7 @@ $(function () {
         },
         function (data) {
             if(data){
-                alert("Welcome to Simtara !")
+                alert("Welcome to HEROS!")
             }
             else{
                 alert("Already exist!")
