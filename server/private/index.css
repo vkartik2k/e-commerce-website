@@ -20,7 +20,7 @@ html,body{
 }
 
 #main{
-    margin-top: 100px;
+    margin-top: 105px;
     width: 100%;
     
 }
@@ -240,4 +240,14 @@ input[type="number"] {
 
 .btnadd{
     margin: 5px;
+}
+
+.headbutton{
+    margin:0px;
+    width:33%;
+    border-radius:0px; 
+}
+
+#btncontainer{
+    text-align: center;
 }

@@ -39,8 +39,10 @@ const users = ecommerce.define('Users', {
 
 const products = ecommerce.define('products', {
     pid : {
-        type: Sequelize.STRING,
-        primaryKey : true
+        type: Sequelize.INTEGER,
+        primaryKey : true,
+        autoIncrement: true
+
     },
     name : {
         type: Sequelize.STRING

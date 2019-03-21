@@ -86,8 +86,7 @@ function login(){
         else{
             $("#headdynamic").html(`Hello, `+ capitalize(data.name) +`
             &nbsp;&nbsp;
-            <a href="./cart.html"><button id="cart" class="btn btn-primary wishcart">GO TO CART</button></a>
-            <a href="./wishlist.html"><button id="wish" class="btn btn-primary wishcart">&#9825; WISHLIST</button></a>
+            <a href="/"><button id="cart" class="btn btn-primary wishcart">HOME</button></a>
             <button id="logout" class="btn btn-outline-primary signinout">LOG OUT</button>
             `)
             $("#logout").click(function () {
@@ -140,6 +139,9 @@ function autocomplete(){
 
 function viewproducts() {
     $('#maincontent').empty()
+    $("viewbtn").addClass('active');
+    $("delbtn").removeClass('active');
+    $("addbtn").removeClass('active');
     let content = ``;
     let template = [
          `<div class="product"><div class="innerproduct" id="product`,
@@ -191,20 +193,36 @@ function openproduct(id){
     })
 }
 function dynamicity(){
-    // $("#addproduct:checked").active(function(){
-    //     console.log("executed add")
-    //     $("#maincontent").html("ADD PRODUCT NOW")
-    // })
-    // $("#viewproducts:checked").active(function(){
-    //     $("#maincontent").html("SHOWING PRODUCTS")
-    // })
-    // if($("#updateproduct:checked")){
-    //     $("#maincontent").html("UPDATE PRODUCT")
-    // }
-    // if($("#deleteproduct:checked")){
-    //     $("#maincontent").html("DELETING PRODUCT NOW")
-    // }
+    viewproducts();
+    $("#addbtn").click(function (){
+        $("#maincontent").html(`<form class="addform" action="/route/opjknmyuhjerdfoe" method="POST">
+        <label class="addheading">Product Details</label><br>
+        <input placeholder="Product Name" class="addfield" name="addpname"><input placeholder="Company Name" class="addfield" name="addcname"><br>
+        <input placeholder="MRP" type="number" class="addfield" name="addmrp"><input placeholder="Discount" type="number" class="addfield"name="adddis"><br>
+        <input placeholder="Shop for" class="addfield" name="addgender"><input placeholder="Description" class="addfield" name="adddes"><br>
+        <input placeholder="Size" class="addfield" name="addsize"><input placeholder="Quantity" class="addfield" name="addqty"><br>
+        <input placeholder="Retailer" class="addfield" name="addretailer"><input placeholder="Retailer Id" class="addfield" name="addrid"><br>
+        <label class="addheading">Add</label><br>
+        <button class="btn btn-primary btnadd">ADD PRODUCT</button>
+        </form>`)
+        $("viewbtn").removeClass('active');
+        $("delbtn").removeClass('active');
+        $("addbtn").addClass('active');
     
+    })
+    $("#viewbtn").click(viewproducts);
+    
+    $("#delbtn").click(function (){
+    $("#maincontent").html(`<form class="addform" action="/route/opjknmyuhjerdfiu" method="POST">
+    <label class="addheading">Product Details</label><br>
+    <input placeholder="Product Id" class="addfield" type="number" name='pid'><br>
+    <button class="btn btn-primary btnadd">DELETE PRODUCT</button>
+    </form>`)
+    $("viewbtn").removeClass('active');
+    $("delbtn").addClass('active');
+    $("addbtn").removeClass('active');
+})
+
 }
 
 $(function () {

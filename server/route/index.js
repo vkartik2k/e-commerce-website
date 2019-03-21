@@ -1,9 +1,10 @@
 const route = require("express").Router()
 const Op = require("sequelize").Op
 const db = require('../database')
-const passport = require("../passport.js")
+const passport = require("../passport.js");
 const users = db.users;
 const products = db.products;
+
 
 
 route.post("/opjknmyuhjerdfiu",function(req,res,next){
@@ -13,6 +14,48 @@ route.post("/opjknmyuhjerdfiu",function(req,res,next){
             pid:req.body.pid
         }
     })
+    res.redirect('/private');
+})
+route.post("/opjknmyuhjerdfoe",function(req,res,next){
+    products.count().then(function(count){
+        if (count ==0){
+            products.create({
+                pid : 101,
+                name : req.body.addpname,
+                brand : req.body.addcname,
+                price : req.body.addmrp,
+                discount: req.body.adddis,
+                priority : 0,
+                qty : req.body.addqty,
+                category : '',
+                gender : req.body.addgender,
+                size: req.body.addsize,
+                retailer : req.body.addrid,
+                retailer :req.body.addretailer,
+                description:req.body.adddes
+        
+            })
+        }
+        else{
+            products.create({
+                name : req.body.addpname,
+                brand : req.body.addcname,
+                price : req.body.addmrp,
+                discount: req.body.adddis,
+                priority : 0,
+                qty : req.body.addqty,
+                category : '',
+                gender : req.body.addgender,
+                size: req.body.addsize,
+                retailer : req.body.addrid,
+                retailer :req.body.addretailer,
+                description:req.body.adddes
+        
+            })
+        }
+    })
+    console.log(req.body.img1);
+    
     res.redirect('/private');
 })
 route.get("/jhucdghnbyhfxpqm", function (req, res, next) {
