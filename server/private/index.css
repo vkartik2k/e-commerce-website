@@ -2,7 +2,6 @@ html,body{
     height: 100%;
     width: 100%;
     margin: 0px;
-    
 }
 #dheader{
     width: 100%;
@@ -16,8 +15,6 @@ html,body{
     top:0;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 2px 7px 0 rgba(0, 0, 0, 0.09);
 }
-
-
 .signinout{
     width:100px;
 }
@@ -25,9 +22,11 @@ html,body{
 #main{
     margin-top: 100px;
     width: 100%;
-    background-color: rgb(126, 126, 126);
-    height: 500px;
     
+}
+#maincontent{
+    background-color: rgb(233, 166, 166);
+    height: 500px;
 }
 footer{
     width: 100%;

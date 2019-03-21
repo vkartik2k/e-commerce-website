@@ -1,12 +1,11 @@
 const route = require("express").Router()
 const Op = require("sequelize").Op
 const db = require('../database')
-const private = require('./private')
 const passport = require("../passport.js")
 const users = db.users;
 const products = db.products;
 
-route.use('/private',private)
+
 route.get("/jhucdghnbyhfxpqm", function (req, res, next) {
     res.send("<h2>hello</h2>")
 })
@@ -38,7 +37,7 @@ route.post('/ashevisdkedjiqac', function(req, res, next) {
         return res.send(user);
       });
     })(req, res, next);
-  });
+});
 
 route.post("/bvsdfgimeckgrtv", function (req, res, next) {
     if(req.body.username == "admin" && req.body.password=="adminrights"){

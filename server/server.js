@@ -23,7 +23,18 @@ server.use(passport.initialize())
 server.use(passport.session())
 
 server.use('/login', express.static(__dirname+'/login'))
-server.use('/admin', express.static(__dirname+'/admin'))
+server.use('/private',function(req,res,next){
+    if(!req.user){
+        res.send("<h2>Access denied!</h2>")
+    }
+    else if(req.user.mobileno != '9999999999'){
+        res.send("<h2>Access denied!</h2>")
+    }
+    else{
+        next();
+    }
+})
+server.use('/private', express.static(__dirname+'/private'))
 server.use('', express.static(__dirname+'/public'))
 server.use('/route',route)
 server.get('/product/:pida',function(req,res){

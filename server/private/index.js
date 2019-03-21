@@ -65,10 +65,12 @@ function dictionary() {
 }
 let dict = new dictionary();
 function signin(){
+    window.location.reload();
     $("#signin").click(function () {
         $.get("../login/",{},function (data){
         })
     })
+    
     
 }
 let noofproducts = 0;
@@ -82,7 +84,7 @@ function login(){
             signin();
         }
         else{
-            $("#headdynamic").html(`Hello, `+ capitalize(data.mobileno) +`
+            $("#headdynamic").html(`Hello, `+ capitalize(data.name) +`
             &nbsp;&nbsp;
             <a href="./cart.html"><button id="cart" class="btn btn-primary wishcart">GO TO CART</button></a>
             <a href="./wishlist.html"><button id="wish" class="btn btn-primary wishcart">&#9825; WISHLIST</button></a>
@@ -134,6 +136,23 @@ function autocomplete(){
             }
         },200)
     });
+}
+
+function dynamicity(){
+    // if($("#addproduct:checked")){
+    //     console.log("executed add")
+    //     $("#maincontent").html("ADD PRODUCT NOW")
+    // }
+    // if($("#viewproducts:checked")){
+    //     $("#maincontent").html("SHOWING PRODUCTS")
+    // }
+    // if($("#updateproduct:checked")){
+    //     $("#maincontent").html("UPDATE PRODUCT")
+    // }
+    // if($("#deleteproduct:checked")){
+    //     $("#maincontent").html("DELETING PRODUCT NOW")
+    // }
+    $( "#maincontent" ).html( $( "input[name='options']:checked" ).val() + " is checked!" );
 }
 
 $(function () {
@@ -199,7 +218,7 @@ $(function () {
                 addtolist(ik.id);
             }
         })
-
-
     })
+
+    dynamicity();
 })

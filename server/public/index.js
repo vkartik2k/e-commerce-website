@@ -82,7 +82,7 @@ function login(){
             signin();
         }
         else{
-            $("#headdynamic").html(`Hello, `+ capitalize(data.mobileno) +`
+            $("#headdynamic").html(`Hello, `+ capitalize(data.name) +`
             &nbsp;&nbsp;
             <a href="./cart.html"><button id="cart" class="btn btn-primary wishcart">GO TO CART</button></a>
             <a href="./wishlist.html"><button id="wish" class="btn btn-primary wishcart">&#9825; WISHLIST</button></a>
