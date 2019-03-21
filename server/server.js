@@ -16,7 +16,6 @@ server.set('view engine','hbs')
 server.use(express.json())
 server.use(express.urlencoded({extenstion:true}))
 
-
 server.use(session({
     secret: 'iloveabigstringwhichissecret'
 }))

@@ -13,52 +13,6 @@ function uniquea(list) {
     });
     return result;
 }
-function addtolist(id){
-    $("#wish"+id).click(function(){
-        
-        $.post("/route/uiythjrefkrtvbna",{
-            id : id
-        },function(data){
-            if(data){
-                $("#publicnotify").text("Added to wishlist!")
-                $("#publicnotify").fadeIn(1000).css("display","block")
-                setTimeout(function() {
-                    $("#publicnotify").fadeOut(1000).css("display","none")
-                }, 2000);
-            }
-            else{
-                $("#publicnotify").text("Login to add to wishlist!")
-                $("#publicnotify").fadeIn(1000).css("display","block")
-                setTimeout(function() {
-                    $("#publicnotify").fadeOut(1000).css("display","none")
-                }, 2000);
-
-            }
-        })
-
-    })   
-    $("#cart"+id).click(function(){
-        $.post("/route/uiythjrefkrtvbnp",{
-            id : id
-        },function(data){
-            if(data){
-                $("#publicnotify").text("Added to cart!")
-                $("#publicnotify").fadeIn(1000).css("display","block")
-                setTimeout(function() {
-                    $("#publicnotify").fadeOut(1000).css("display","none")
-                }, 2000);
-            }
-            else{
-                $("#publicnotify").text("Login to add to cart!")
-                $("#publicnotify").fadeIn(1000).css("display","block")
-                setTimeout(function() {
-                    $("#publicnotify").fadeOut(1000).css("display","none")
-                }, 2000);
-
-            }
-        })
-    }) 
-}
 function node(){
     this.arr = [];
     for(let i=0;i<256;i++){
@@ -149,8 +103,8 @@ function login(){
         }
     })
 }
+
 function autocomplete(){
-    
     var hsearch = $('#hsearch');
 
     hsearch.on('keyup', function () {
@@ -166,7 +120,7 @@ function autocomplete(){
             
             $("#dropdown").html(str);
 
-        },300)
+        },100)
 
         setTimeout(function(){
             let data = hsearch.val();
@@ -182,8 +136,8 @@ function autocomplete(){
     });
 }
 
-$(function(){
-    login();
+$(function () {
+    login()
     $.post('../route/qwdfghyubndsiosd/',
     {},
     function(data){
@@ -194,7 +148,58 @@ $(function(){
         }
     })
     autocomplete();
+
     $("#hsearchbutton").click(function(){
-        window.location.href = "../";
+        let searchvar = $("#hsearch").val();
+        noofproducts = 0;
+        let passingobject = {
+            name :{
+                arr : [searchvar]
+            },
+            brand: {
+                arr : [searchvar]
+            },
+            size :{
+                arr :[searchvar]
+            },
+            gender: {
+                arr : [searchvar]
+            },
+            retailer :{
+                arr :[searchvar]
+            },
+            discount: {
+                arr : [searchvar]
+            }
+          };
+        content = ``;
+        $.post('../route/sdjkoplmnjiuhbwf',
+        passingobject,
+        function(data){
+            $("#publicnotify").text("Searching")
+            $("#publicnotify").fadeIn(1000).css("display","block")
+            setTimeout(function() {
+                $("#publicnotify").fadeOut(1000).css("display","none")
+            }, 2000);
+            for (ik of data){
+                noofproducts++;
+                let dis = ik.price * (ik.discount/100.0);
+                let newprice = roundNumber(ik.price - dis,2);
+                if(ik.qty){
+                    content += template[0]+ik.id+template[1] +ik.id+template[2]+ ik.name + template[3] + ik.brand + template[4] + roundNumber(ik.price,2)+template[5]+" ("+ik.discount+template[6]+newprice + template[7]+ik.id+template[8]+ik.id+template[9];
+                }
+                else{
+                    content += template[0]+ik.id+template[1] +ik.id+template[2]+ ik.name + template[3] + ik.brand + template[4] + roundNumber(ik.price,2)+template[5]+" ("+ik.discount+template[6]+newprice + template[7]+ik.id+template[10]+ik.id+template[9];
+    
+                }
+            }
+            $("#container").empty();
+            $("#container").html(content);
+            for (ik of data){
+                addtolist(ik.id);
+            }
+        })
+
+
     })
 })

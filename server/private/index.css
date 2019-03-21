@@ -4,79 +4,6 @@ html,body{
     margin: 0px;
     
 }
-
-#container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:space-around;
-    align-items:center;
-    padding-top: 15px;
-    width: calc(100%);
-}
-
-.product{
-
-    width: 230px;
-    margin:5px;
-    border: 1px solid rgb(240, 240, 240);
-    border-radius: 3px;
-    background-color: rgb(255, 255, 255);
-}
-
-.image{
-    width: 214px;
-    margin: 8px;
-    background-color: rgb(216, 216, 216);
-    overflow: hidden;
-
-}
-
-.productname{
-    text-align: center;
-    font-size: 15pt;
-    margin:2.5px;
-    
-}
-.producer{
-    text-align: center;
-    font-size: 10pt;
-    margin:2.5px;
-
-}
-
-.price{
-    text-align: center;
-    font-size: 12pt;
-    margin:2.5px;
-    color: rgb(82, 82, 82);
-}
-.price1{
-    text-decoration: line-through;
-    display: inline;
-}
-.newprice{
-    color: rgb(7, 128, 7);
-    font-size: 14pt;
-    display: inline;
-}
-
-
-.buy{
-    text-align: center;
-    margin:2.5px;
-}
-
-.wishlist{
-    text-align: center;
-    margin:2.5px;
-    margin-bottom: 8px;
-
-}
-
-.btnpersonal{
-    width: 214px;
-}
-
 #dheader{
     width: 100%;
     background-color: rgb(247, 247, 247);
@@ -95,21 +22,12 @@ html,body{
     width:100px;
 }
 
-
-
-#category{
-    display: inline-block;
-    width: 350px;
+#main{
+    margin-top: 100px;
+    width: 100%;
+    background-color: rgb(126, 126, 126);
+    height: 500px;
     
-    padding: 3px;
-}
-.categorya{
-    overflow: auto;
-    max-height: 900px;
-    padding: 3px;
-    border-bottom:0.5px solid rgb(167, 167, 167);
-
-
 }
 footer{
     width: 100%;
@@ -117,27 +35,6 @@ footer{
     background-color: rgb(182, 182, 182);
     padding:10px;
     margin-top:20px;
-}
-
-.kfilter{
-    width: 100%;
-    border:0.5px solid rgb(167, 167, 167);
-    padding: 10px;
-    
-}
-
-.kfilterhead{
-    width:100%;
-    font-size: 19px;
-    text-align: center;
-    font-weight: 600;
-    padding-bottom: 5px;
-}
-
-.btnfilter{
-    width: 100%;
-    margin-bottom: 5px; 
-    margin-top: 5px; 
 }
 
 #headlogo{
@@ -187,16 +84,6 @@ footer{
     outline: none;
     border : 1.2px rgb(47, 218, 161) solid;
 
-}
-
-
-.imgproduct{
-    transition: transform .2s;
-}
-
-
-.imgproduct:hover{
-    transform: scale(1.05);
 }
 #searchimg{
     height: 19px;
@@ -253,15 +140,4 @@ footer{
     font-size:30pt;
     color: rgb(230, 21, 21) ;
     text-shadow: 3px 3px 0.5px #1fc8db98;
-}
-.innerproduct:hover{
-    cursor: pointer;
-}
-#main{
-    display: flex;
-    align-items:flex-start;
-    margin-top: 100px;
-    width: 100%;
-    background-color: rgb(255, 255, 255);
-    
 }

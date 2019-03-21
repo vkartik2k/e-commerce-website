@@ -1,11 +1,12 @@
 const route = require("express").Router()
 const Op = require("sequelize").Op
 const db = require('../database')
-const rights = require('../rights.js')
+const private = require('./private')
 const passport = require("../passport.js")
 const users = db.users;
 const products = db.products;
 
+route.use('/private',private)
 route.get("/jhucdghnbyhfxpqm", function (req, res, next) {
     res.send("<h2>hello</h2>")
 })
