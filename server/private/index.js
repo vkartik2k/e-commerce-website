@@ -138,21 +138,73 @@ function autocomplete(){
     });
 }
 
+function viewproducts() {
+    $('#maincontent').empty()
+    let content = ``;
+    let template = [
+         `<div class="product"><div class="innerproduct" id="product`,
+         `">
+        <div class="image"><img class="imgproduct" src="../image/`,
+        `.png" width="214px"></div>
+        <div class="productname">`,
+        `</div>
+        <div class="producer">`,
+        `</div>
+        <div class="price">&#8377;<div class="price1">`,
+        '</div>',
+        `% )<div class="newprice">`,
+         `/-</div></div></div>
+        </div></div>`
+    ]
+    $.post('../route/qwdfghyubndsiosd/',
+    {},
+    function(data){
+        for (let j=0;j<data.length;j++){
+            let i = data[j];
+            noofproducts++;
+            let dis = i.price * (i.discount/100.0);
+            let newprice = roundNumber(i.price - dis,2);
+            console.log(i.qty)
+            if(i.qty){
+                content += template[0]+i.id+template[1] +i.id+template[2]+ i.name + template[3] + i.brand + template[4] + roundNumber(i.price,2)+template[5]+" ("+i.discount+template[6]+newprice + template[7];
+            }
+            else{
+                content += template[0]+i.id+template[1] +i.id+template[2]+ i.name + template[3] + i.brand + template[4] + roundNumber(i.price,2)+template[5]+" ("+i.discount+template[6]+newprice + template[7];
+
+            }
+
+        }
+        $("#maincontent").html(content);
+        for (let j=0;j<data.length;j++){
+            let i = data[j];
+            openproduct(i.id);
+            
+            
+
+        }
+    })
+}
+
+function openproduct(id){
+    $("#product"+id).click(function(){
+        window.location.href= "../product/"+id;
+    })
+}
 function dynamicity(){
-    // if($("#addproduct:checked")){
+    // $("#addproduct:checked").active(function(){
     //     console.log("executed add")
     //     $("#maincontent").html("ADD PRODUCT NOW")
-    // }
-    // if($("#viewproducts:checked")){
+    // })
+    // $("#viewproducts:checked").active(function(){
     //     $("#maincontent").html("SHOWING PRODUCTS")
-    // }
+    // })
     // if($("#updateproduct:checked")){
     //     $("#maincontent").html("UPDATE PRODUCT")
     // }
     // if($("#deleteproduct:checked")){
     //     $("#maincontent").html("DELETING PRODUCT NOW")
     // }
-    $( "#maincontent" ).html( $( "input[name='options']:checked" ).val() + " is checked!" );
+    
 }
 
 $(function () {

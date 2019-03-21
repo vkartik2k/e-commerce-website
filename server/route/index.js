@@ -6,6 +6,15 @@ const users = db.users;
 const products = db.products;
 
 
+route.post("/opjknmyuhjerdfiu",function(req,res,next){
+    console.log(req.body.pid);
+    products.destroy({
+        where:{
+            pid:req.body.pid
+        }
+    })
+    res.redirect('/private');
+})
 route.get("/jhucdghnbyhfxpqm", function (req, res, next) {
     res.send("<h2>hello</h2>")
 })

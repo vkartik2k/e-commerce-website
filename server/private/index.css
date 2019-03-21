@@ -25,8 +25,13 @@ html,body{
     
 }
 #maincontent{
-    background-color: rgb(233, 166, 166);
-    height: 500px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    align-items:center;
+    padding-top: 10px;
+    min-height: 450px;
 }
 footer{
     width: 100%;
@@ -139,4 +144,100 @@ footer{
     font-size:30pt;
     color: rgb(230, 21, 21) ;
     text-shadow: 3px 3px 0.5px #1fc8db98;
+}
+
+.imgproduct{
+    transition: transform .2s;
+}
+
+
+.imgproduct:hover{
+    transform: scale(1.05);
+}
+.product{
+
+    width: 230px;
+    margin:5px;
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 3px;
+    background-color: rgb(255, 255, 255);
+    min-height: 400px;
+}
+
+.image{
+    width: 214px;
+    margin: 8px;
+    background-color: rgb(216, 216, 216);
+    overflow: hidden;
+
+}
+
+.productname{
+    text-align: center;
+    font-size: 15pt;
+    margin:2.5px;
+    
+}
+.producer{
+    text-align: center;
+    font-size: 10pt;
+    margin:2.5px;
+
+}
+
+.price{
+    text-align: center;
+    font-size: 12pt;
+    margin:2.5px;
+    color: rgb(82, 82, 82);
+}
+.price1{
+    text-decoration: line-through;
+    display: inline;
+}
+.newprice{
+    color: rgb(7, 128, 7);
+    font-size: 14pt;
+    display: inline;
+}
+
+.addheading{
+    font-size: 18pt;
+    margin:10px;
+    border-bottom: 1px rgb(94, 94, 94) solid;
+}
+
+.addform{
+    text-align: center;
+    margin: 10px;
+}
+
+.addfield{
+    margin:3px;
+    background-color: rgba(0, 0, 0, 0.89);
+    border: 1px solid rgb(63, 63, 63);
+    color:rgb(255, 255, 255);
+    padding: 1px;
+    padding-left : 8px; 
+    border-radius: 20px;
+    height: 40px;
+    width: 300px;
+}
+
+.addfield:focus{
+    outline: 0;
+    border: 1px solid rgb(3, 255, 234);
+    color: white;
+}
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+ 
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.btnadd{
+    margin: 5px;
 }

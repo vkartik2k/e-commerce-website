@@ -45,19 +45,40 @@
     <div id="main">
         <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
             <label class="btn btn-secondary active">
-                <input type="radio" id="viewproducts" name="options"  autocomplete="off" checked> View Products
+                <input type="radio" id="viewproducts" name="options" value='viewproducts'checked> View Products
             </label>
             <label class="btn btn-secondary">
-                <input type="radio" name="options" id="addproduct" autocomplete="off"> Add Product
+                <input type="radio" name="options" id="addproduct" value="addproduct" > Add Product
             </label>
             <label class="btn btn-secondary">
-                <input type="radio" name="options" id="updateproduct" autocomplete="off"> Update Product
+                <input type="radio" name="options" id="updateproduct"> Update Product
             </label>
             <label class="btn btn-secondary">
-                <input type="radio" name="options" id="deleteproduct" autocomplete="off"> Delete Product
+                <input type="radio" name="options" id="deleteproduct"> Delete Product
             </label>
         </div>
         <div id="maincontent">
+            <!-- <form class="addform">
+                <label class="addheading">Cover Image</label><br>
+                <input type="file" accept="*" id="img" ><br>
+                <label class="addheading">Product Images</label><br>
+                <input type="file" accept="*" id="img" ><br>
+                <input type="file" accept="*" id="img" ><br>
+                <input type="file" accept="*" id="img"><br>
+                <label class="addheading">Details</label><br>
+                <input placeholder="Product Name" class="addfield"><input placeholder="Company Name" class="addfield"><br>
+                <input placeholder="MRP" type="number" class="addfield"><input placeholder="Discount" type="number" class="addfield"><br>
+                <input placeholder="Shop for" class="addfield"><input placeholder="Description" class="addfield"><br>
+                <input placeholder="Size" class="addfield"><input placeholder="Quantity" class="addfield"><br>
+                <input placeholder="Retailer" class="addfield"><input placeholder="RetailerId" class="addfield"><br>
+                <label class="addheading">Add</label><br>
+                <button class="btn btn-primary btnadd">ADD PRODUCT</button>
+            </form> -->
+            <form class="addform" action="/route/opjknmyuhjerdfiu" method="POST">
+                    <label class="addheading">Product Details</label><br>
+                    <input placeholder="Product Id" class="addfield" type="number" name='pid'><br>
+                    <button class="btn btn-primary btnadd">DELETE PRODUCT</button>
+            </form>
 
         </div>
     </div>

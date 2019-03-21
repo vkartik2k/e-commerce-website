@@ -1,0 +1,14 @@
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+}
+
+.addheading{
+    font-size: 16pt;
+    margin:10px;
+}
+
+#addform{
+    text-align: center;
+}
