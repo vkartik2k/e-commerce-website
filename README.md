@@ -13,4 +13,14 @@ Adding image option is not directly provided so to give product images make chan
 
 The site will be active on domain http://localhost:1212/
 
+Screenshots
+
+![Screenshot](screenshot1.png)
+
+![Screenshot](screenshot2.png)
+
+![Screenshot](screenshot3.png)
+
+![Screenshot](screenshot4.png)
+
 
