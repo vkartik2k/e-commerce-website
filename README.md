@@ -15,12 +15,12 @@ The site run on http://localhost:1212/.
 
 Screenshots
 
-![Screenshot](screenshot1.png)
+![Screenshot](Screenshot1.png)
 
-![Screenshot](screenshot2.png)
+![Screenshot](Screenshot2.png)
 
-![Screenshot](screenshot3.png)
+![Screenshot](Screenshot3.png)
 
-![Screenshot](screenshot4.png)
+![Screenshot](Screenshot4.png)
 
 
